@@ -31,6 +31,7 @@ namespace VendingMachineWPF
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
             }
+
         }
         private string _author;
 
