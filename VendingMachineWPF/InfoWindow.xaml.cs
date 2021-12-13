@@ -22,7 +22,7 @@ namespace VendingMachineWPF
     /// <summary>
     /// Interaction logic for InfoWindow.xaml
     /// </summary>
-    public partial class InfoWindow : Window,INotifyPropertyChanged
+    public partial class InfoWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyRaised([CallerMemberName] string propertyname = null)
@@ -146,8 +146,12 @@ namespace VendingMachineWPF
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key==Key.Escape)
+            if (e.Key == Key.Escape)
+            {
+                if (Wo.PlaybackState == PlaybackState.Playing)
+                    Wo.Stop();
                 this.Close();
+            }
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
